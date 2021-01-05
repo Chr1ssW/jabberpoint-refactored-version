@@ -74,18 +74,21 @@ public class TextItem extends SlideItem {
 
 	//Draws the item
 	public void draw(int x, int y, float scale, Graphics g,
-                     Style myStyle, ImageObserver o) {
-		if (text == null || text.length() == 0) {
+                     Style myStyle, ImageObserver o)
+	{
+		if (text == null || text.length() == 0)
+		{
 			return;
 		}
+
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 		Point pen = new Point(x + (int)(myStyle.getIndent() * scale),
 				y + (int) (myStyle.getLeading() * scale));
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(myStyle.getColor());
-		Iterator<TextLayout> it = layouts.iterator();
-		while (it.hasNext()) {
-			TextLayout layout = it.next();
+		
+		for (TextLayout layout : layouts)
+		{
 			pen.y += layout.getAscent();
 			layout.draw(g2d, pen.x, pen.y);
 			pen.y += layout.getDescent();
