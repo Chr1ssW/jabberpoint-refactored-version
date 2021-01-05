@@ -19,7 +19,8 @@ public class Slide {
 	protected String title; //The title is kept separately
 	protected Vector<SlideItem> items; //The SlideItems are kept in a vector
 
-	public Slide() {
+	public Slide()
+	{
 		items = new Vector<>();
 	}
 
