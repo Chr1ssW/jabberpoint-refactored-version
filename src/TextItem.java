@@ -37,7 +37,7 @@ public class TextItem extends SlideItem {
 
 	//An empty textitem
 	public TextItem() {
-		this(0, this.EMPTYTEXT);
+		this(0, EMPTYTEXT);
 	}
 
 	//Returns the text
