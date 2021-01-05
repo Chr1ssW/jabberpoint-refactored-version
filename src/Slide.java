@@ -78,7 +78,8 @@ public class Slide {
 		//Drawing all other elements
 		for (int number = 0; number < this.getSize(); number++)
 		{
-			y += drawElements(this.getSlideItems().elementAt(number), y, g, area, view);
+			SlideItem currentItem = this.getSlideItems().elementAt(number);
+			y += drawElements(currentItem, y, g, area, view);
 		}
 	}
 
