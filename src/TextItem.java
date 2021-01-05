@@ -86,7 +86,7 @@ public class TextItem extends SlideItem {
 				y + (int) (myStyle.getLeading() * scale));
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(myStyle.getColor());
-		
+
 		for (TextLayout layout : layouts)
 		{
 			pen.y += layout.getAscent();

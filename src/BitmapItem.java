@@ -51,11 +51,13 @@ public class BitmapItem extends SlideItem {
 	}
 
 	//Returns the bounding box of the image
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.getLeading() * scale)) +
-				(int) (bufferedImage.getHeight(observer) * scale));
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
+	{
+		int indent = (int) (myStyle.getIndent() * scale);
+		int width = (int) (bufferedImage.getWidth(observer) * scale);
+		int height = (int) (myStyle.getLeading() * scale) + (int) (bufferedImage.getHeight(observer) * scale);
+
+		return new Rectangle(indent, 0, width, height);
 	}
 
 	//Draws the image
