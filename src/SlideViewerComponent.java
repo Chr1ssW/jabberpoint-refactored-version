@@ -35,7 +35,7 @@ public class SlideViewerComponent extends JComponent {
 	private static final int YPOS = 20;
 
 	public SlideViewerComponent(Presentation pres, JFrame frame) {
-		setBackground(BGCOLOR); 
+		this.setBackground(BGCOLOR);
 		this.presentation = pres;
 		this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 		this.frame = frame;

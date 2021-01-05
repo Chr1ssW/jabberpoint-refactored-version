@@ -157,7 +157,6 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
-
 	/**
 	 * Finds the level of an element in the xml file
 	 */
