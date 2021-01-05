@@ -1,7 +1,3 @@
-import javax.swing.JOptionPane;
-
-import java.io.IOException;
-
 /** JabberPoint Main Program
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
@@ -27,17 +23,12 @@ public class JabberPoint {
 		Styles.createStyles();
 		Presentation presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
-		try {
-			if (argv.length == 0) { //a demo presentation
-				Accessor.getDemoAccessor().loadFile(presentation, "");
-			} else {
-				new XMLAccessor().loadFile(presentation, argv[0]);
-			}
-			presentation.setSlideNumber(0);
-		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
-					JOptionPane.ERROR_MESSAGE);
+
+		if (argv.length == 0) { //a demo presentation
+			Accessor.loadDemoPresentation(presentation);
+		} else {
+			new XMLAccessor().loadFile(presentation, argv[0]);
 		}
+		presentation.setSlideNumber(0);
 	}
 }
