@@ -61,7 +61,7 @@ public class Slide {
 
 	private int drawElements(SlideItem slideItem, int y, Graphics g, Rectangle area, ImageObserver view)
 	{
-		Style style = Style.getStyle(slideItem.getLevel());
+		Style style = Styles.getStyle(slideItem.getLevel());
 		slideItem.draw(area.x, y, getScale(area), g, style, view);
 
 		return slideItem.getBoundingBox(g, view, getScale(area), style).height;

@@ -34,6 +34,6 @@ public abstract class SlideItem {
 			ImageObserver observer, float scale, Style style);
 
 	//Draws the item
-	public abstract void draw(int x, int y, float scale, 
-			Graphics g, Style style, ImageObserver observer);
+	public abstract void draw(int x, int y, float scale,
+							  Graphics g, Style style, ImageObserver observer);
 }
