@@ -50,7 +50,9 @@ public class BitmapItem extends SlideItem {
 		return imageName;
 	}
 
-	//Returns the bounding box of the image
+	/**
+	 * Returns the bounding box of the image
+	 */
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
 	{
 		int indent = (int) (myStyle.getIndent() * scale);
@@ -60,7 +62,9 @@ public class BitmapItem extends SlideItem {
 		return new Rectangle(indent, 0, width, height);
 	}
 
-	//Draws the image
+	/**
+	 * Draws the image
+	 */
 	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
 	{
 		int width = x + (int) (myStyle.getIndent() * scale);

@@ -61,6 +61,7 @@ public class TextItem extends SlideItem {
 		int xsize = 0;
 		int ysize = (int) (myStyle.getLeading() * scale);
 
+		//Getting all the layouts and iterating through them
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 		for (TextLayout layout : layouts)
 		{
@@ -74,6 +75,7 @@ public class TextItem extends SlideItem {
 
 			ysize += layout.getLeading() + layout.getDescent();
 		}
+
 		return new Rectangle((int)(myStyle.getIndent() * scale), 0, xsize, ysize );
 	}
 
