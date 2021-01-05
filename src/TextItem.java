@@ -32,23 +32,23 @@ public class TextItem extends SlideItem {
 	//A textitem of int level with text string
 	public TextItem(int level, String string) {
 		super(level);
-		text = string;
+		this.text = string;
 	}
 
 	//An empty textitem
 	public TextItem() {
-		this(0, EMPTYTEXT);
+		this(0, this.EMPTYTEXT);
 	}
 
 	//Returns the text
 	public String getText() {
-		return text == null ? "" : text;
+		return this.text == null ? "" : this.text;
 	}
 
 	//Returns the AttributedString for the Item
 	public AttributedString getAttributedString(Style style, float scale) {
 		AttributedString attrStr = new AttributedString(getText());
-		attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
+		attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, this.text.length());
 		return attrStr;
 	}
 
@@ -76,7 +76,7 @@ public class TextItem extends SlideItem {
 	public void draw(int x, int y, float scale, Graphics g,
                      Style myStyle, ImageObserver o)
 	{
-		if (text == null || text.length() == 0)
+		if (this.text == null || this.text.length() == 0)
 		{
 			return;
 		}
