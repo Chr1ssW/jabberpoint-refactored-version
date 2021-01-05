@@ -46,28 +46,43 @@ public class SlideViewerComponent extends JComponent {
 	}
 
 	public void update(Presentation presentation, Slide data) {
-		if (data == null) {
-			repaint();
-			return;
+		if (data != null)
+		{
+			this.presentation = presentation;
+			this.slide = data;
+			frame.setTitle(presentation.getTitle());
 		}
-		this.presentation = presentation;
-		this.slide = data;
+
 		repaint();
-		frame.setTitle(presentation.getTitle());
 	}
 
-	//Draw the slide
-	public void paintComponent(Graphics g) {
+	/**
+	 * Draws the slide
+	 */
+	public void paintComponent(Graphics g)
+	{
+		if (this.presentation.getSlideNumber() < 0 || this.slide == null)
+			return;
+
+		setupGraphics(g);
+
+		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
+		this.slide.draw(g, area, this);
+	}
+
+	/**
+	 * Set up default values for graphics
+	 */
+	private void setupGraphics(Graphics g)
+	{
 		g.setColor(BGCOLOR);
 		g.fillRect(0, 0, getSize().width, getSize().height);
-		if (presentation.getSlideNumber() < 0 || slide == null) {
-			return;
-		}
 		g.setFont(labelFont);
 		g.setColor(COLOR);
-		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-                 presentation.getSize(), XPOS, YPOS);
-		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-		slide.draw(g, area, this);
+
+		int currentSlide = this.presentation.getSlideNumber();
+		int totalSlide = this.presentation.getSize();
+
+		g.drawString("Slide " + (1 + currentSlide + " of " + totalSlide), XPOS, YPOS);
 	}
 }

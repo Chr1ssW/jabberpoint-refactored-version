@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Font;
 
 /** <p>Class containing all the styles</p>
  * <p>The link between a style number and a item level is hard-linked:

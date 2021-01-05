@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 
 public class TextItem extends SlideItem {
-	private String text;
+	private final String text;
 	
 	private static final String EMPTYTEXT = "No Text Given";
 
@@ -81,12 +81,14 @@ public class TextItem extends SlideItem {
 			return;
 		}
 
-		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-		Point pen = new Point(x + (int)(myStyle.getIndent() * scale),
-				y + (int) (myStyle.getLeading() * scale));
+		int indent = (int)(myStyle.getIndent() * scale);
+		int leading = (int)(myStyle.getLeading() * scale);
+		Point pen = new Point(x + indent,y + leading);
+
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(myStyle.getColor());
 
+		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 		for (TextLayout layout : layouts)
 		{
 			pen.y += layout.getAscent();
@@ -95,8 +97,9 @@ public class TextItem extends SlideItem {
 		}
 	  }
 
-	private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-		List<TextLayout> layouts = new ArrayList<TextLayout>();
+	private List<TextLayout> getLayouts(Graphics g, Style s, float scale)
+	{
+		List<TextLayout> layouts = new ArrayList<>();
 		AttributedString attrStr = getAttributedString(s, scale);
     	Graphics2D g2d = (Graphics2D) g;
     	FontRenderContext frc = g2d.getFontRenderContext();

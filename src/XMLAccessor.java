@@ -57,7 +57,9 @@ public class XMLAccessor extends Accessor {
 		return titles.item(0).getTextContent();
 	}
 
-	//Opens an xml file and prints it as a presentation
+	/**
+	 * Opens an xml file and prints it as a presentation
+	 */
 	public void loadFile(Presentation presentation, String filename)
 	{
 		Element element = null;
@@ -117,7 +119,9 @@ public class XMLAccessor extends Accessor {
 		out.close();
 	}
 
-	//Reads an xml document and builds an element
+	/**
+	 * Reads an xml document and builds an element
+	 */
 	private Element buildDocument(String filename) throws ParserConfigurationException, IOException, SAXException {
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		Document document = builder.parse(new File(filename)); //Create a JDOM document
@@ -125,7 +129,10 @@ public class XMLAccessor extends Accessor {
 		return document.getDocumentElement();
 	}
 
-	//Goes through slides and their content and prints them on screen
+
+	/**
+	 * Goes through slides and their content and prints them on screen
+	 */
 	private void printElements(Presentation presentation, Element element)
 	{
 		presentation.setTitle(getTitle(element, SHOWTITLE));
@@ -150,7 +157,10 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
-	//Finds the level of an element in the xml file
+
+	/**
+	 * Finds the level of an element in the xml file
+	 */
 	private int getLevelText(NamedNodeMap attributes)
 	{
 		String levelText = attributes.getNamedItem(LEVEL).getTextContent();
@@ -165,8 +175,10 @@ public class XMLAccessor extends Accessor {
 		return 1;
 	}
 
-	//Finds the type of an element in the xml file
-	//If not text or image it prints unknown type
+	/**
+	 * Finds the type of an element in the xml file
+	 * If not text or image it prints unknown type
+	 */
 	private void appendElementByType(Slide slide, NamedNodeMap attributes, int level, Element item)
 	{
 		String type = attributes.getNamedItem(KIND).getTextContent();
@@ -181,7 +193,9 @@ public class XMLAccessor extends Accessor {
 		}
 	}
 
-	//Loads elements from the xml file
+	/**
+	 * Loads elements from the xml file
+	 */
 	protected void loadSlideItem(Slide slide, Element item)
 	{
 		NamedNodeMap attributes = item.getAttributes();
