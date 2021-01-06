@@ -28,11 +28,6 @@ import org.w3c.dom.NodeList;
 public class XMLAccessor extends Accessor {
 
 	/**
-	 * Default API to use.
-	 */
-	protected static final String DEFAULT_API_TO_USE = "dom";
-
-	/**
 	 * Names of xml tags of attributes
 	 */
 	protected static final String SHOWTITLE = "showtitle";
@@ -82,6 +77,11 @@ public class XMLAccessor extends Accessor {
 
 	}
 
+	/**
+	 * Saves a presentation to a file
+	 * @param presentation Presentation to be saved
+	 * @param filename Name of the saved files
+	 */
 	public void saveFile(Presentation presentation, String filename) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");

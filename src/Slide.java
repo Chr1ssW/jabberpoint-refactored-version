@@ -21,44 +21,50 @@ public class Slide {
 
 	public Slide()
 	{
-		items = new Vector<>();
+		this.items = new Vector<>();
 	}
 
-	//Add a SlideItem
 	public void append(SlideItem anItem) {
-		items.addElement(anItem);
+		this.items.addElement(anItem);
 	}
 
-	//Return the title of a slide
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
-	//Change the title of a slide
 	public void setTitle(String newTitle) {
-		title = newTitle;
+		this.title = newTitle;
 	}
 
-	//Create a TextItem out of a String and add the TextItem
+	public SlideItem getSlideItem(int number) {
+		return this.items.elementAt(number);
+	}
+
+	/**
+	 * Create a TextItem out of a String and add the TextItem
+	 */
 	public void append(int level, String message) {
 		append(new TextItem(level, message));
 	}
 
-	//Returns the SlideItem
-	public SlideItem getSlideItem(int number) {
-		return items.elementAt(number);
-	}
-
-	//Return all the SlideItems in a vector
+	/**
+	 * @return all the SlideItems in a vector
+	 */
 	public Vector<SlideItem> getSlideItems() {
-		return items;
+		return this.items;
 	}
 
-	//Returns the size of a slide
+	/**
+	 * @return the size of a slide
+	 */
 	public int getSize() {
-		return items.size();
+		return this.items.size();
 	}
 
+	/**
+	 * Draws one single element to the screen. Used in draw() method
+	 * @return The bottom Y-axis position of the drawn element
+	 */
 	private int drawElements(SlideItem slideItem, int y, Graphics g, Rectangle area, ImageObserver view)
 	{
 		Style style = Styles.getStyle(slideItem.getLevel());
@@ -67,7 +73,9 @@ public class Slide {
 		return slideItem.getBoundingBox(g, view, getScale(area), style).height;
 	}
 
-	//Draws the contents of the slide on the screen
+	/**
+	 * Draws the contents of the slide on the screen
+	 */
 	public void draw(Graphics g, Rectangle area, ImageObserver view)
 	{
 		int y = area.y;
@@ -83,7 +91,10 @@ public class Slide {
 		}
 	}
 
-	//Returns the scale to draw a slide
+	/**
+	 * @param area Rectangle object
+	 * @return the scale to draw a slide
+	 */
 	private float getScale(Rectangle area) {
 		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
 	}

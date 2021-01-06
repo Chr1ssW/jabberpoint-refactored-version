@@ -11,7 +11,6 @@ import java.awt.Color;
  * @version 1.4 2007/07/16 Sylvia Stuurman
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
- * @version 1.7 2020/01/05 Chris Takacs
  */
 
 public class Styles {
@@ -27,6 +26,11 @@ public class Styles {
 		styles[4] = new Style(90, Color.black, 24, 10);	// style for item-level 4
 	}
 
+	/**
+	 * Finds the style of a given leven
+	 * @param level level of the style to be returned
+	 * @return the style for that level
+	 */
 	public static Style getStyle(int level) {
 		if (level >= styles.length) {
 			level = styles.length - 1;

@@ -24,9 +24,11 @@ public class JabberPoint {
 		Presentation presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
 
+
 		if (argv.length == 0) {
 			Accessor.loadDemoPresentation(presentation); //a demo presentation
 		} else {
+
 			new XMLAccessor().loadFile(presentation, argv[0]);
 		}
 

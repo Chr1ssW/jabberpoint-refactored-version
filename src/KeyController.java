@@ -18,18 +18,22 @@ public class KeyController extends KeyAdapter {
 		presentation = p;
 	}
 
+	/**
+	 * Makes the presentation controllable with keys
+	 * @param keyEvent A pressed key to be processed by the method.
+	 */
 	public void keyPressed(KeyEvent keyEvent) {
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				presentation.nextSlide();
+				this.presentation.nextSlide();
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				presentation.prevSlide();
+				this.presentation.prevSlide();
 				break;
 			case 'q':
 			case 'Q':

@@ -1,17 +1,13 @@
-import java.awt.Rectangle;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.font.TextLayout;
-import java.awt.font.TextAttribute;
-import java.awt.font.LineBreakMeasurer;
+import java.awt.*;
 import java.awt.font.FontRenderContext;
+import java.awt.font.LineBreakMeasurer;
+import java.awt.font.TextAttribute;
+import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.text.AttributedString;
-import java.util.List;
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.List;
 
 /** <p>A text item.</p>
  * <p>A text item has drawing capabilities.</p>
@@ -54,7 +50,8 @@ public class TextItem extends SlideItem {
 	}
 
 	/**
-	 * Returns the bounding box of an Item
+	 * Returns the bounding box of a textItem into which the text can fit
+	 * @return Rectangle object
 	 */
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
 	{
@@ -80,7 +77,7 @@ public class TextItem extends SlideItem {
 	}
 
 	/**
-	 * Draws the textItem
+	 * Draws the textItem onto the screen
 	 */
 	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o)
 	{
@@ -106,7 +103,8 @@ public class TextItem extends SlideItem {
 	}
 
 	/**
-	 * Returns the linebreaks of textItems
+	 * Returns the linebreaks of textItems. Used in the draw method
+	 * @return LineBreakMeasurer which tells where the lines are broken on the slide
 	 */
 	private LineBreakMeasurer getLineBreaks(Graphics g, Style s, float scale)
 	{
@@ -118,7 +116,8 @@ public class TextItem extends SlideItem {
 	}
 
 	/**
-	 * Returns the layouts of the textItems
+	 * Returns the layouts of the textItems. Used in the draw method
+	 * @return List with the layouts
 	 */
 	private List<TextLayout> getLayouts(Graphics g, Style s, float scale)
 	{

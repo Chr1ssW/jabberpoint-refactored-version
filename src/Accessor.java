@@ -18,6 +18,10 @@ public abstract class Accessor {
 
 	public Accessor() {}
 
+	/**
+	 * A demo presentation for the application.
+	 * @param presentation A presentation to fill with content.
+	 */
 	public static void loadDemoPresentation(Presentation presentation)
 	{
 		presentation.setTitle(DEMO_NAME);
@@ -57,8 +61,18 @@ public abstract class Accessor {
 		presentation.append(slide);
 	}
 
+	/**
+	 * All child classes have loadFile method which prints a presentation on the screen.
+	 * @param p A presentation to fill with content.
+	 * @param fn Name of the file to be opened
+	 */
 	abstract public void loadFile(Presentation p, String fn) throws IOException;
 
+	/**
+	 * All child classes have saveFile method which saves a presentation to a file.
+	 * @param p A presentation to be saved.
+	 * @param fn Name of the file to be saved.
+	 */
 	abstract public void saveFile(Presentation p, String fn) throws IOException;
 
 }

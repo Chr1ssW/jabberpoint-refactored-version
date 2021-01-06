@@ -52,6 +52,9 @@ public class MenuController extends MenuBar {
 		return new MenuItem(name, new MenuShortcut(name.charAt(0)));
 	}
 
+	/**
+	 * Shows the about box of the application with a message dialog.
+	 */
 	private void showAboutBox()
 	{
 		JOptionPane.showMessageDialog(parent,
@@ -68,6 +71,9 @@ public class MenuController extends MenuBar {
 		);
 	}
 
+	/**
+	 * Adds the filemenu and its element(s).
+	 */
 	private void addFileMenu()
 	{
 		Menu fileMenu = new Menu(FILE);
@@ -122,9 +128,12 @@ public class MenuController extends MenuBar {
 	{
 		MenuItem menuItem;
 		menu.add(menuItem = mkMenuItem(EXIT));
-		menuItem.addActionListener(actionEvent -> presentation.exit(0));
+		menuItem.addActionListener(actionEvent -> System.exit(0));
 	}
 
+	/**
+	 * Adds the viewmenu and its element(s).
+	 */
 	private void addViewMenu()
 	{
 		Menu viewMenu = new Menu(VIEW);
@@ -157,10 +166,21 @@ public class MenuController extends MenuBar {
 		menuItem.addActionListener(actionEvent -> {
 			String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
 			int pageNumber = Integer.parseInt(pageNumberStr);
-			presentation.setSlideNumber(pageNumber - 1);
+
+			if (pageNumber > presentation.getSize())
+			{
+				presentation.setSlideNumber(presentation.getSlideNumber());
+			}
+			else if (pageNumber > 0)
+			{
+				presentation.setSlideNumber(pageNumber - 1);
+			}
 		});
 	}
 
+	/**
+	 * Adds the helpmenu and its element(s).
+	 */
 	private void addHelpMenu()
 	{
 		Menu helpMenu = new Menu(HELP);

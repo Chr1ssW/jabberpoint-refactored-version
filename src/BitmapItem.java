@@ -27,11 +27,15 @@ public class BitmapItem extends SlideItem {
   protected static final String FILE = "File ";
   protected static final String NOTFOUND = " not found";
 
-
-  	//level indicates the item-level; name indicates the name of the file with the image
+	/**
+	 * Constructor for BitmapItem
+	 * @param level indicates the item-level.
+	 * @param name indicates the name of the file with the image
+	 */
 	public BitmapItem(int level, String name) {
 		super(level);
-		imageName = name;
+		this.imageName = name;
+
 		try {
 			bufferedImage = ImageIO.read(new File(imageName));
 		}
@@ -40,18 +44,22 @@ public class BitmapItem extends SlideItem {
 		}
 	}
 
-	//An empty bitmap item
+	/**
+	 * Empty bitmap item
+	 */
 	public BitmapItem() {
 		this(0, null);
 	}
 
-	//Returns the filename of the image
+	/**
+	 * @return The filename of an image (string)
+	 */
 	public String getName() {
-		return imageName;
+		return this.imageName;
 	}
 
 	/**
-	 * Returns the bounding box of the image
+	 * @return The bounding box of an image (int)
 	 */
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
 	{
@@ -63,19 +71,23 @@ public class BitmapItem extends SlideItem {
 	}
 
 	/**
-	 * Draws the image
+	 * Draws the image on the screen
 	 */
 	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
 	{
 		int width = x + (int) (myStyle.getIndent() * scale);
 		int height = y + (int) (myStyle.getLeading() * scale);
 		int imageWidth = (int) (this.bufferedImage.getWidth(observer)*scale);
-		int imageHeight = (int) (bufferedImage.getHeight(observer)*scale);
+		int imageHeight = (int) (this.bufferedImage.getHeight(observer)*scale);
 
 		g.drawImage(this.bufferedImage, width, height, imageWidth, imageHeight, observer);
 	}
 
+	/**
+	 * Converts a bitmapitem to string in an understandable manner.
+	 * @return A string with the level and imagename of the bitmap.
+	 */
 	public String toString() {
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
+		return "BitmapItem[" + getLevel() + "," + this.imageName + "]";
 	}
 }

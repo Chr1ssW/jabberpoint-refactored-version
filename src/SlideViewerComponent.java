@@ -22,7 +22,7 @@ public class SlideViewerComponent extends JComponent {
 	private Slide slide; //The current slide
 	private final Font labelFont; //The font for labels
 	private Presentation presentation; //The presentation
-	private JFrame frame;
+	private final JFrame frame;
 	
 	private static final long serialVersionUID = 227L;
 	
@@ -45,11 +45,16 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
-		if (data != null)
+	/**
+	 * Sets the current slide of a presentation to a new slide
+	 * @param presentation The presentation where the slide is updated
+	 * @param slide The slide to be displayed
+	 */
+	public void update(Presentation presentation, Slide slide) {
+		if (slide != null)
 		{
 			this.presentation = presentation;
-			this.slide = data;
+			this.slide = slide;
 			this.frame.setTitle(presentation.getTitle());
 		}
 
@@ -57,7 +62,7 @@ public class SlideViewerComponent extends JComponent {
 	}
 
 	/**
-	 * Draws the slide
+	 * Draws the slide on the screen
 	 */
 	public void paintComponent(Graphics g)
 	{

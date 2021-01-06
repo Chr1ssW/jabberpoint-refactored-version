@@ -29,7 +29,11 @@ public class SlideViewerFrame extends JFrame {
 		setupWindow(slideViewerComponent, presentation);
 	}
 
-	//Setup the GUI
+	/**
+	 * Setup the GUI
+	 * @param slideViewerComponent the component where the presentation is displayed
+	 * @param presentation to be displayed
+	 */
 	public void setupWindow(SlideViewerComponent slideViewerComponent, Presentation presentation)
 	{
 		addWindowListener(new WindowAdapter() {
