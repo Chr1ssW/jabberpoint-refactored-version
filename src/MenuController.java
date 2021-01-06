@@ -130,19 +130,6 @@ public class MenuController extends MenuBar {
 		});
 	}
 
-	private void trythis()
-	{
-
-		Accessor xmlAccessor = new XMLAccessor();
-		try {
-			xmlAccessor.saveFile(presentation, SAVEFILE);
-		} catch (IOException exc) {
-			JOptionPane.showMessageDialog(parent, IOEX + exc,
-					SAVEERR, JOptionPane.ERROR_MESSAGE);
-		}
-
-	}
-
 	private void addExit(Menu menu)
 	{
 		MenuItem menuItem;

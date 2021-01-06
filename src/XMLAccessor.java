@@ -91,7 +91,7 @@ public class XMLAccessor extends Accessor {
 		out.print(presentation.getTitle());
 		out.println("</showtitle>");
 		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
-			Slide slide = presentation.getSlide(slideNumber);
+			Slide slide = 	presentation.getSlide(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 			Vector<SlideItem> slideItems = slide.getSlideItems();
@@ -102,14 +102,12 @@ public class XMLAccessor extends Accessor {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
 					out.print( ( (TextItem) slideItem).getText());
 				}
-				else {
-					if (slideItem instanceof BitmapItem) {
+				else if (slideItem instanceof BitmapItem) {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
 						out.print( ( (BitmapItem) slideItem).getName());
-					}
-					else {
-						System.out.println("Ignoring " + slideItem);
-					}
+				}
+				else {
+					System.out.println("Ignoring " + slideItem);
 				}
 				out.println("</item>");
 			}
