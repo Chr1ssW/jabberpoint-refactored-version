@@ -80,6 +80,7 @@ public class MenuController extends MenuBar {
 
 		this.addOpen(fileMenu);
 		this.addNew(fileMenu);
+		this.addSave(fileMenu);
 		fileMenu.addSeparator();
 		this.addExit(fileMenu);
 
@@ -109,9 +110,14 @@ public class MenuController extends MenuBar {
 		MenuItem menuItem;
 		menu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(actionEvent -> {
-			presentation.clear();
-			parent.repaint();
+			this.presentation.clear();
+			this.parent.repaint();
 		});
+	}
+
+	private void addSave(Menu menu)
+	{
+		MenuItem menuItem;
 		menu.add(menuItem = mkMenuItem(SAVE));
 		menuItem.addActionListener(e -> {
 			Accessor xmlAccessor = new XMLAccessor();
@@ -122,6 +128,19 @@ public class MenuController extends MenuBar {
 						SAVEERR, JOptionPane.ERROR_MESSAGE);
 			}
 		});
+	}
+
+	private void trythis()
+	{
+
+		Accessor xmlAccessor = new XMLAccessor();
+		try {
+			xmlAccessor.saveFile(presentation, SAVEFILE);
+		} catch (IOException exc) {
+			JOptionPane.showMessageDialog(parent, IOEX + exc,
+					SAVEERR, JOptionPane.ERROR_MESSAGE);
+		}
+
 	}
 
 	private void addExit(Menu menu)

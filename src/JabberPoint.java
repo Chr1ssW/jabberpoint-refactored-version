@@ -13,8 +13,6 @@
  */
 
 public class JabberPoint {
-	protected static final String IOERR = "IO Error: ";
-	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
 	/** The main program */
@@ -24,11 +22,9 @@ public class JabberPoint {
 		Presentation presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
 
-
 		if (argv.length == 0) {
 			Accessor.loadDemoPresentation(presentation); //a demo presentation
 		} else {
-
 			new XMLAccessor().loadFile(presentation, argv[0]);
 		}
 
