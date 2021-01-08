@@ -38,6 +38,9 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
+	private MenuItem menuItem;
+	private final Accessor xmlAccessor = new XMLAccessor();
+
 	public MenuController(Frame frame, Presentation pres) {
 		this.parent = frame;
 		this.presentation = pres;
@@ -89,13 +92,11 @@ public class MenuController extends MenuBar {
 
 	private void addOpen(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(OPEN));
-		menuItem.addActionListener(actionEvent -> {
+		menu.add(this.menuItem = mkMenuItem(OPEN));
+		this.menuItem.addActionListener(actionEvent -> {
 			presentation.clear();
-			Accessor xmlAccessor = new XMLAccessor();
 			try {
-				xmlAccessor.loadFile(presentation, TESTFILE);
+				this.xmlAccessor.loadFile(presentation, TESTFILE);
 				presentation.setSlideNumber(0);
 			} catch (IOException exc) {
 				JOptionPane.showMessageDialog(parent, IOEX + exc,
@@ -107,9 +108,8 @@ public class MenuController extends MenuBar {
 
 	private void addNew(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(NEW));
-		menuItem.addActionListener(actionEvent -> {
+		menu.add(this.menuItem = mkMenuItem(NEW));
+		this.menuItem.addActionListener(actionEvent -> {
 			this.presentation.clear();
 			this.parent.repaint();
 		});
@@ -117,12 +117,10 @@ public class MenuController extends MenuBar {
 
 	private void addSave(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(SAVE));
-		menuItem.addActionListener(e -> {
-			Accessor xmlAccessor = new XMLAccessor();
+		menu.add(this.menuItem = mkMenuItem(SAVE));
+		this.menuItem.addActionListener(e -> {
 			try {
-				xmlAccessor.saveFile(presentation, SAVEFILE);
+				this.xmlAccessor.saveFile(presentation, SAVEFILE);
 			} catch (IOException exc) {
 				JOptionPane.showMessageDialog(parent, IOEX + exc,
 						SAVEERR, JOptionPane.ERROR_MESSAGE);
@@ -132,9 +130,8 @@ public class MenuController extends MenuBar {
 
 	private void addExit(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(EXIT));
-		menuItem.addActionListener(actionEvent -> System.exit(0));
+		menu.add(this.menuItem = mkMenuItem(EXIT));
+		this.menuItem.addActionListener(actionEvent -> System.exit(0));
 	}
 
 	/**
@@ -153,23 +150,20 @@ public class MenuController extends MenuBar {
 
 	private void addNext(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(NEXT));
-		menuItem.addActionListener(actionEvent -> presentation.nextSlide());
+		menu.add(this.menuItem = mkMenuItem(NEXT));
+		this.menuItem.addActionListener(actionEvent -> presentation.nextSlide());
 	}
 
 	private void addPrev(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(PREV));
-		menuItem.addActionListener(actionEvent -> presentation.prevSlide());
+		menu.add(this.menuItem = mkMenuItem(PREV));
+		this.menuItem.addActionListener(actionEvent -> presentation.prevSlide());
 	}
 
 	private void addGoto(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(GOTO));
-		menuItem.addActionListener(actionEvent -> {
+		menu.add(this.menuItem = mkMenuItem(GOTO));
+		this.menuItem.addActionListener(actionEvent -> {
 			String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
 			int pageNumber = Integer.parseInt(pageNumberStr);
 
@@ -196,8 +190,7 @@ public class MenuController extends MenuBar {
 
 	private void addAbout(Menu menu)
 	{
-		MenuItem menuItem;
-		menu.add(menuItem = mkMenuItem(ABOUT));
-		menuItem.addActionListener(actionEvent -> showAboutBox());
+		menu.add(this.menuItem = mkMenuItem(ABOUT));
+		this.menuItem.addActionListener(actionEvent -> showAboutBox());
 	}
 }

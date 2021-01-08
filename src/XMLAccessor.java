@@ -74,7 +74,6 @@ public class XMLAccessor extends Accessor {
 
 		if (element != null)
 			printElements(presentation, element);
-
 	}
 
 	/**

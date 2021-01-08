@@ -57,7 +57,7 @@ public class Presentation {
 	 * @param number the slide to be changed to
 	 */
 	public void setSlideNumber(int number) {
-		currentSlideNumber = number;
+		this.currentSlideNumber = number;
 		if (this.slideViewComponent != null) {
 			this.slideViewComponent.update(this, getCurrentSlide());
 		}

@@ -24,7 +24,7 @@ public abstract class Accessor {
 	 */
 	public static void loadDemoPresentation(Presentation presentation)
 	{
-		presentation.setTitle(DEMO_NAME);
+		presentation.setTitle("Demo presentation");
 		Slide slide;
 		slide = new Slide();
 		slide.setTitle("JabberPoint");
