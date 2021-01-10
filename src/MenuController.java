@@ -35,11 +35,10 @@ public class MenuController extends MenuBar {
 	protected static final String SAVEFILE = "savedPresentation.xml";
 	
 	protected static final String IOEX = "IO Exception: ";
-	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
 	private MenuItem menuItem;
-	private final Accessor xmlAccessor = new XMLAccessor();
+	private final XMLAccessor xmlAccessor = new XMLAccessor();
 
 	public MenuController(Frame frame, Presentation pres) {
 		this.parent = frame;
@@ -95,13 +94,10 @@ public class MenuController extends MenuBar {
 		menu.add(this.menuItem = mkMenuItem(OPEN));
 		this.menuItem.addActionListener(actionEvent -> {
 			presentation.clear();
-			try {
-				this.xmlAccessor.loadFile(presentation, TESTFILE);
-				presentation.setSlideNumber(0);
-			} catch (IOException exc) {
-				JOptionPane.showMessageDialog(parent, IOEX + exc,
-						LOADERR, JOptionPane.ERROR_MESSAGE);
-			}
+
+			this.xmlAccessor.loadFile(presentation, TESTFILE);
+			presentation.setSlideNumber(0);
+
 			parent.repaint();
 		});
 	}
